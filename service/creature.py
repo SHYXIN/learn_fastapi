@@ -1,5 +1,10 @@
+import os
 from model.creature import Creature
-import data.creature as data
+if os.getenv("CRYPTID_UNIT_TEST"):
+    from fake import creature as data
+else:
+    from data import creature as data
+
 from typing import Union
 
 
@@ -15,13 +20,9 @@ def create(creature: Creature) -> Creature:
     return data.create(creature)
 
 
-def replace(id, creature: Creature) -> Creature:
-    return data.replace(id, creature)
+def modify(name: str, creature: Creature) -> Creature:
+    return data.replace(name, creature)
 
 
-def modify(id, creature: Creature) -> Creature:
-    return data.modify(id, creature)
-
-
-def delete(id, creature: Creature) -> Creature:
-    return data.delete(id)
+def delete(name: str) -> Creature:
+    return data.delete(name)

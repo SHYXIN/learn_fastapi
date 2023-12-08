@@ -42,7 +42,7 @@ def create(creature: Creature) -> Creature:
     return get_one(creature.name)
 
 
-def modify(creature: Creature) -> Creature:
+def modify(name:str ,creature: Creature) -> Creature:
     qry = """update creature
              set country=:country,
                  name=:name,
